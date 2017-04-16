@@ -1,10 +1,23 @@
 # Scratch-map API
 
-## Setup dependencies
+## Manage dependencies
+
+### Setup dependencies
 Run next commands in bash:
 > `$ source venv/bin/activate`
 
 > `$ pip install -r requirements.txt`
 
-## Deactivate virtual environment
+### Freeze dependencies
+After install new dependence please use:
+> `$ pip freeze > requirements.txt`
+
+### Deactivate virtual environment
 Run `$ deactivate` in bash
+
+## Run project
+### to run project locally
+use `$ ./manage.py runserver`
+
+### to run project with production config
+use `$ ./manage.py -c config/production.py runserver`
