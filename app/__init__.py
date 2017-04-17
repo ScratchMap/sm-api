@@ -17,7 +17,6 @@ def create_app(config=None):
 
     if config:
         path_to_config = os.path.join(BASEDIR, config)
-        print(path_to_config)
         app.config.from_pyfile(path_to_config)
     else:
         print(DEFAULT_CONFIG)
