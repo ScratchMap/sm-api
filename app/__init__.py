@@ -10,6 +10,7 @@ from app.api import api
 BASEDIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 DEFAULT_CONFIG = os.path.join(BASEDIR, 'config/local.py')
 
+
 def create_app(config=None):
     """ create app """
     app = Flask(__name__)

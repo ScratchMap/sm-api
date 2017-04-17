@@ -1,7 +1,7 @@
-from flask import request
 from flask_restful import Api
 
 from app.test.resource import TestResource
+
 
 class ScratchMapApi(Api):
 
@@ -17,6 +17,7 @@ class ScratchMapApi(Api):
         response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
 
         return response
+
 
 api = ScratchMapApi()
 api.add_resource(TestResource, '/test')
