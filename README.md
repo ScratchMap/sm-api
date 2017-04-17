@@ -9,7 +9,7 @@ Run next commands in bash:
 
 > `$ source venv/bin/activate`
 
-> `$ pip install -r requirements.txt`
+> `$ sudo pip install -r requirements.txt`
 
 ### Freeze dependencies
 After install new dependence please use:
