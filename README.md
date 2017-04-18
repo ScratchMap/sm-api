@@ -11,6 +11,10 @@ Run next commands in bash:
 
 > `$ sudo pip install -r requirements.txt`
 
+> `$ sudo pip install Flask-Script`
+
+> `$ sudo pip install flask_restful`
+
 ### Freeze dependencies
 After install new dependence please use:
 > `$ pip freeze > requirements.txt`
