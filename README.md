@@ -5,7 +5,7 @@
 ### Setup dependencies
 Run next commands in bash:
 
-> `$ pyvenv venv`
+> `$ python3 -m venv venv`
 
 > `$ source venv/bin/activate`
 
