@@ -5,15 +5,11 @@
 ### Setup dependencies
 Run next commands in bash:
 
-> `$ virtualenv -p python3 venv`
+> `$ pyvenv venv`
 
 > `$ source venv/bin/activate`
 
-> `$ sudo pip install -r requirements.txt`
-
-> `$ sudo pip install Flask-Script`
-
-> `$ sudo pip install flask_restful`
+> `$ pip3 install -r requirements.txt`
 
 ### Freeze dependencies
 After install new dependence please use:
