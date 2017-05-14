@@ -22,4 +22,4 @@ class ScratchMapApi(Api):
 
 api = ScratchMapApi()
 
-api.add_resource(TestResource, '/test')
+api.add_resource(TestResource, '/')
