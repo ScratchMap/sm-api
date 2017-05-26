@@ -1,6 +1,7 @@
 from flask_restful import Api
 
 from app.test.resource import TestResource
+from app.hello.controllers import Hello
 
 
 class ScratchMapApi(Api):
@@ -8,7 +9,7 @@ class ScratchMapApi(Api):
     def init_app(self, app):
         super(ScratchMapApi, self).init_app(app)
         app.after_request(self.add_cors_headers)
-        app.run(host='0.0.0.0', port=app.config['PORT'])
+        #app.run(host='0.0.0.0', port=app.config['PORT'])
 
     def add_cors_headers(self, response):
         """ Allow Cross domain responses """
@@ -22,4 +23,5 @@ class ScratchMapApi(Api):
 
 api = ScratchMapApi()
 
+api.add_resource(Hello, '/hello')
 api.add_resource(TestResource, '/test')
