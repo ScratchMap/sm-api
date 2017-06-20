@@ -6,10 +6,14 @@
 
 '''
 
+import os
+
 DEBUG = False
 TESTING = False
 
 JSON_AS_ASCII = False
 
 ERROR_404_HELP = False
-# SQLALCHEMY_DATABASE_URI = os.environ['SQLALCHEMY_DATABASE_URI']
+
+PORT = os.environ['PORT']
+SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
