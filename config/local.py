@@ -11,7 +11,7 @@ TESTING = False
 
 JSON_AS_ASCII = False
 
-SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:PostGreSQL@localhost/sm'
+SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:PostGreSQL@localhost:5432/postgres'
 SQLALCHEMY_TRACK_MODIFICATIONS = True
 
 PERMANENT_SESSION_LIFETIME = 3600
