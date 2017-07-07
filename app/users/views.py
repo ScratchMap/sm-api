@@ -1,37 +1,23 @@
 from flask_restful import Resource
-from flask import request, abort
-
-import uuid
-
+# from flask import make_response, jsonify
 from app.users.models import User
-from app.database import db
+# from app.auth.views import authenticate
+from flask_login import login_required
 
 class Users(Resource):
 
+    # @authenticate
+    # def get(self, resp):
+    @login_required
     def get(self):
-        # name = request.args.get('name', '')
-        # result = User.query.filter_by(name=name).first()
+        responseObject = {
+            'status' : 'success',
+            'message' : [{
+                'id': user.id,
+                'name': user.name,
+                'email' : user.email
+            }for user in User.query.all()]
+        }
+        # return make_response(jsonify(responseObject)), 201
+        return responseObject, 201
 
-        # if not result and name != '':
-        #     result = db_user(name=str(name))
-        #     # db.session.add(result)
-        #     # db.session.commit()
-        # return {'message': str(result)}
-
-        return [ {'id': user.id, 'name': user.name} for user in User.query.all() ]
-
-    def post(self):
-        name = request.form['name']
-        email = request.form['email']
-        password = request.form['password']
-
-        id = str(uuid.uuid4())
-        print(name)
-        print(email)
-        print(password)
-        user = User(id=id, name=name, email=email, password=password)
-
-        db.session.add(user)
-        db.session.commit()
-
-        return user.id;
