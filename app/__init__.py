@@ -23,6 +23,9 @@ def create_app(config=None):
         app.config.from_pyfile(DEFAULT_CONFIG)
 
     init_app(app)
+    init_db(app)
+    init_bcrypt(app)
+    init_login_manager(app)
     
     migrate = Migrate(app, db)
 
@@ -30,11 +33,6 @@ def create_app(config=None):
 
 def init_app(app):
     api.init_app(app)
-    init_db(app)
-    init_bcrypt(app)
-    init_login_manager(app)
-
-    migrate = Migrate(app, db)
 
 def init_db(app):
     db.init_app(app)
