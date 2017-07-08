@@ -3,9 +3,10 @@ from app.utils import db, bcrypt
 from datetime import datetime, timedelta
 import jwt
 from flask import current_app
-from flask_login import UserMixin
+# from flask_login import UserMixin
 
-class User(UserMixin, db.Model):
+# class User(UserMixin, db.Model):
+class User(db.Model):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -26,7 +27,7 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return bcrypt.check_password_hash(self.password, password)
-"""
+
     def encode_auth_token(self, user_id):
         try:
             payload = {
@@ -65,4 +66,3 @@ def decode_auth_token(auth_token):
     
     except jwt.InvalidTokenError:
         return 'Invalid token. Please log in again.'
-"""

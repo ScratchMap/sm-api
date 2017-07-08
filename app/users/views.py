@@ -1,15 +1,17 @@
 from flask_restful import Resource
 # from flask import make_response, jsonify
 from app.users.models import User
-# from app.auth.views import authenticate
-from flask_login import login_required
+from app.auth.views import authenticate
+# from flask_login import login_required
 
 class Users(Resource):
 
-    # @authenticate
-    # def get(self, resp):
+    """
     @login_required
     def get(self):
+    """
+    @authenticate
+    def get(self, resp):
         responseObject = {
             'status' : 'success',
             'message' : [{
