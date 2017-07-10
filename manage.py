@@ -1,6 +1,5 @@
 #!venv/bin/python3
 
-from flask_script import Manager
 from flask_script import Server, Manager
 from flask_migrate import MigrateCommand
 from app import create_app
