@@ -8,7 +8,6 @@ from app.auth.views import RegisterAPI, LoginAPI, UserAPI, LogoutAPI
 class ScratchMapApi(Api):
 
     def init_app(self, app):
-        print("init_app")
         super(ScratchMapApi, self).init_app(app)
         app.after_request(self.add_cors_headers)
         # if not app.config['DEBUG']:
