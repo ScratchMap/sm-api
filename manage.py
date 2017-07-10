@@ -10,5 +10,6 @@ manager.add_command('db', MigrateCommand)
 # manager.add_command('test', PytestCommand)
 
 print(__name__)
+print(manager.app.api)
 if __name__ == '__main__':
     manager.run()
