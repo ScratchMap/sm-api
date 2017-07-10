@@ -8,10 +8,9 @@ import os
 
 manager = Manager(create_app)
 manager.add_option('-c', '--config', dest='config', required=False)
-print(os.environ.get('SERVER_NAME'))
-# manager.add_command('runserver', Server(port=os.environ.get('PORT', 5000)))
+manager.add_command('runserver', Server(port=os.environ.get('PORT', 5000)))
 manager.add_command('db', MigrateCommand)
 # manager.add_command('test', PytestCommand)
 
-# if __name__ == '__main__':
-manager.run()
+if __name__ == '__main__':
+    manager.run()
