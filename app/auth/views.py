@@ -56,6 +56,7 @@ class RegisterAPI(Resource):
     '''
     def post(self):
         post_data = request.get_json()
+        print(post_data)
 
         user = User.query.filter_by(
             email=post_data.get('email')
