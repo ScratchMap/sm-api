@@ -10,5 +10,5 @@ manager.add_command('db', MigrateCommand)
 # manager.add_command('test', PytestCommand)
 
 if __name__ == '__main__':
-    print(create_app.config)
+    print(manager.get_options())
     manager.run()
