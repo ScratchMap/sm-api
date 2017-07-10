@@ -8,7 +8,7 @@ import os
 
 manager = Manager(create_app)
 manager.add_option('-c', '--config', dest='config', required=False)
-manager.add_command('runserver', Server(host='109.227.78.16', port=os.environ.get('PORT', 5000)))
+manager.add_command('runserver', Server(port=os.environ.get('PORT', 5000)))
 manager.add_command('db', MigrateCommand)
 # manager.add_command('test', PytestCommand)
 
