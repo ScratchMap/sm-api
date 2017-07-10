@@ -10,5 +10,5 @@ manager.add_command('db', MigrateCommand)
 # manager.add_command('test', PytestCommand)
 
 if __name__ == '__main__':
-    print(manager.get_options().get('PORT'))
+    print(manager._options)
     manager.run()
