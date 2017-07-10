@@ -11,8 +11,8 @@ class ScratchMapApi(Api):
         print("init_app")
         super(ScratchMapApi, self).init_app(app)
         app.after_request(self.add_cors_headers)
-        if not app.config['DEBUG']:
-            app.run(host='0.0.0.0', port=app.config['PORT'])
+        # if not app.config['DEBUG']:
+        #     app.run(host='0.0.0.0', port=app.config['PORT'])
 
     def add_cors_headers(self, response):
         """ Allow Cross domain responses """
