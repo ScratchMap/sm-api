@@ -15,6 +15,7 @@ DEFAULT_CONFIG = os.path.join(BASEDIR, 'config/local.py')
 def create_app(config=None):
     """ create app """
     app = Flask(__name__)
+    print(config)
 
     if config:
         path_to_config = os.path.join(BASEDIR, config)
