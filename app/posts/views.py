@@ -117,7 +117,7 @@ class User_Posts(Resource):
 
                 responseObject = {
                     'status' : 'success',
-                    'message' : 'Successfully update post.',
+                    'message' : 'Successfully updated post.',
                     'post' : post.get_id_title
                 }
                 return responseObject, 202
