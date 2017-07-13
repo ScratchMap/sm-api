@@ -6,7 +6,7 @@ import os
 
 from flask import Flask
 from app.api import api
-from app.utils import db, bcrypt, login_manager
+from app.utils import db, bcrypt
 from flask_migrate import Migrate
 
 BASEDIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
@@ -25,7 +25,6 @@ def create_app(config=None):
     init_app(app)
     init_db(app)
     init_bcrypt(app)
-    init_login_manager(app)
     
     migrate = Migrate(app, db)
 
@@ -39,6 +38,3 @@ def init_db(app):
 
 def init_bcrypt(app):
     bcrypt.init_app(app)
-
-def init_login_manager(app):
-    login_manager.init_app(app)
