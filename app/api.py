@@ -31,8 +31,8 @@ api.add_resource(LogoutAPI, '/auth/logout')
 
 api.add_resource(Users, '/users')
 
-api.add_resource(Posts, '/posts', '/posts/<int:post_id>', '/posts/<int:user_id>')
-api.add_resource(User_Posts, '/user/posts', '/user/posts/<int:post_id>')
+api.add_resource(Posts, '/posts')
+api.add_resource(User_Posts, '/user/posts')
 
 api.add_resource(Hello, '/hello')
 api.add_resource(TestResource, '/test')

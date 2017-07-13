@@ -1,19 +1,22 @@
 from flask_restful import Resource
-from flask import request
+from flask import request, redirect, url_for
 from app.posts.models import Post
 from app.utils import db
 from app.auth.views import authenticate
 
 class Posts(Resource):
 
-    def get(self, post_id=None, user_id=None):
-        
+    def get(self):
+        post_id = request.args.get('post_id')
+        user_id = request.args.get('user_id')
+
+        param = {}
         if post_id:
-            posts = Post.query.filter_by(id=post_id).all()
-        elif user_id:
-            posts = Post.query.filter_by(user_id=user_id).all()
-        else:
-            posts = Post.query.all()
+            param['id'] = post_id
+        if user_id:
+            param['user_id'] = user_id
+
+        posts = Post.query.filter_by(**param).all()
 
         responseObject = {
             'status' : 'success',
@@ -25,11 +28,14 @@ class Posts(Resource):
 class User_Posts(Resource):
 
     @authenticate
-    def get(self, resp, post_id=None):
+    def get(self, resp):
+        post_id = request.args.get('post_id')
+
+        param = {'user_id' : resp}
         if post_id:
-            return Posts.get(self=self, post_id=post_id)
-        else:
-            return Posts.get(self=self, user_id=resp)
+            param['post_id'] = post_id
+
+        return redirect(url_for('posts', **param))
 
     @authenticate
     def post(self, resp):
@@ -65,7 +71,8 @@ class User_Posts(Resource):
             return responseObject, 500
 
     @authenticate
-    def delete(self, resp, post_id):
+    def delete(self, resp):
+        post_id = request.args.get('post_id')
         try:
             post = Post.query.filter_by(id=post_id, user_id=resp).first()
             if post:
@@ -95,13 +102,12 @@ class User_Posts(Resource):
             return responseObject, 500
 
     @authenticate
-    def patch(self, resp, post_id):
+    def patch(self, resp):
         post_data = request.get_json()
-
         try:
-            post = Post.query.filter_by(id=post_id, user_id=resp).first()
+            post_post_data = post_data['post']
+            post = Post.query.filter_by(id=post_post_data['id'], user_id=resp).first()
             if post:
-                post_post_data = post_data['post']
                 if post.title != post_post_data['data']['title']:
                     post.title = post_post_data['data']['title']
                 if post.description != post_post_data['data']['body']:
