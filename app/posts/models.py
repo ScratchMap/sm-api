@@ -5,8 +5,8 @@ class Post(db.Model):
     __tablename__ = 'posts'
 
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(255), nullable=False)
-    description = db.Column(db.String(255))
+    title = db.Column(db.Text, nullable=False)
+    description = db.Column(db.Text)
     geo_lat = db.Column(db.Float, nullable=False)
     geo_lng = db.Column(db.Float, nullable=False)
     datetime = db.Column(db.DateTime, default=datetime.utcnow)
