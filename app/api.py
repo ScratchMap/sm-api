@@ -16,7 +16,7 @@ class ScratchMapApi(Api):
         """ Allow Cross domain responses """
         # TODO in production we need to use only our domain
         response.headers.add('Access-Control-Allow-Origin', '*')
-        response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Autorization')
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
         response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,PATCH,DELETE')
 
         return response
