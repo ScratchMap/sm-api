@@ -26,7 +26,7 @@ api = ScratchMapApi()
 
 api.add_resource(RegisterAPI, '/auth/register')
 api.add_resource(LoginAPI, '/auth/login')
-api.add_resource(UserAPI, '/auth/status')
+api.add_resource(UserAPI, '/auth/profile')
 api.add_resource(LogoutAPI, '/auth/logout')
 
 api.add_resource(Users, '/users')
