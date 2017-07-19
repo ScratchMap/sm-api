@@ -47,9 +47,12 @@ class User_Posts(Resource):
     @authenticate
     def post(self, resp):
         post_data = request.get_json()
-
+        print(1)
+        print(post_data)
         try:
             post_post_data = post_data['post']
+            print(2)
+            print(post_post_data)
 
             post = Post(
                 title=post_post_data['data']['title'],
@@ -70,11 +73,12 @@ class User_Posts(Resource):
 
         except Exception as e:
             db.session.rollback()
+            print(0)
+            print(e)
             
             responseObject = {
                 'status' : 'fail',
-                'message' : 'Try again.',
-                'error' : e
+                'message' : 'Try again.'
             }
             return responseObject, 500
 
