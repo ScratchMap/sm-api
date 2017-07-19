@@ -74,6 +74,7 @@ class User_Posts(Resource):
             responseObject = {
                 'status' : 'fail',
                 'message' : 'Try again.'
+                'error' : e
             }
             return responseObject, 500
 
