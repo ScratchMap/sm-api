@@ -19,7 +19,11 @@ class Post(db.Model):
     def get_id_title(self):
         return {
             'id' : self.id,
-            'title' : self.title
+            'title' : self.title,
+            'geo' : {
+                'lat' : self.geo_lat,
+                'lng' : self.geo_lng
+            }
         }
 
     @property

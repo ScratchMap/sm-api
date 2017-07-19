@@ -6,24 +6,23 @@ from app.auth.views import authenticate
 
 class Posts(Resource):
 
-    def get(self, id=None):
+    def get(self):
         responseObject = {
             'status' : 'success',
             'message' : 'Successfully got post(s)'
         }
         
-        if id:
-            post = Post.query.filter_by(id=id).first()
+        post_id = request.args.get('post_id')
+
+        if post_id:
+            post = Post.query.filter_by(id=post_id).first()
 
             responseObject['post'] = post.get_all_data
 
         else:
-            post_id = request.args.get('post_id')
             user_id = request.args.get('user_id')
 
             param = {}
-            if post_id:
-                param['id'] = post_id
             if user_id:
                 param['user_id'] = user_id
             posts = Post.query.filter_by(**param).all()
@@ -47,12 +46,8 @@ class User_Posts(Resource):
     @authenticate
     def post(self, resp):
         post_data = request.get_json()
-        print(1)
-        print(post_data)
         try:
             post_post_data = post_data['post']
-            print(2)
-            print(post_post_data)
 
             post = Post(
                 title=post_post_data['data']['title'],
@@ -73,8 +68,6 @@ class User_Posts(Resource):
 
         except Exception as e:
             db.session.rollback()
-            print(0)
-            print(e)
             
             responseObject = {
                 'status' : 'fail',
