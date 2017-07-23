@@ -7,7 +7,6 @@ from app.auth.views import authenticate
 class Posts(Resource):
 
     def get(self):
-        
         try:
             responseObject = {
                 'status' : 'success',
