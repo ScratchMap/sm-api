@@ -7,29 +7,40 @@ from app.auth.views import authenticate
 class Posts(Resource):
 
     def get(self):
-        responseObject = {
-            'status' : 'success',
-            'message' : 'Successfully got post(s)'
-        }
         
-        post_id = request.args.get('post_id')
+        try:
+            responseObject = {
+                'status' : 'success',
+                'message' : 'Successfully got post(s)'
+            }
+            
+            post_id = request.args.get('post_id')
 
-        if post_id:
-            post = Post.query.filter_by(id=post_id).first()
+            if post_id:
+                post = Post.query.filter_by(id=post_id).first()
 
-            responseObject['post'] = post.get_all_data
+                responseObject['post'] = post.get_all_data
 
-        else:
-            user_id = request.args.get('user_id')
+            else:
+                user_id = request.args.get('user_id')
 
-            param = {}
-            if user_id:
-                param['user_id'] = user_id
-            posts = Post.query.filter_by(**param).all()
+                param = {}
+                if user_id:
+                    param['user_id'] = user_id
+                posts = Post.query.filter_by(**param).all()
 
-            responseObject['posts'] = [post.get_id_title for post in posts]
+                responseObject['posts'] = [post.get_id_title for post in posts]
 
-        return responseObject, 200
+            return responseObject, 200
+        
+        except Exception as e:
+            
+            responseObject = {
+                'status' : 'fail',
+                'message' : 'Try again.'
+            }
+            return responseObject, 500
+
 
 class User_Posts(Resource):
 
