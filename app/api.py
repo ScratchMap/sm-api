@@ -5,6 +5,7 @@ from app.hello.controllers import Hello
 from app.users.views import Users
 from app.auth.views import RegisterAPI, LoginAPI, UserAPI, LogoutAPI
 from app.posts.views import Posts, User_Posts
+from app.index.views import Index
 
 class ScratchMapApi(Api):
 
@@ -24,15 +25,17 @@ class ScratchMapApi(Api):
 
 api = ScratchMapApi()
 
-api.add_resource(RegisterAPI, '/auth/register')
-api.add_resource(LoginAPI, '/auth/login')
-api.add_resource(UserAPI, '/auth/profile')
-api.add_resource(LogoutAPI, '/auth/logout')
+api.add_resource(Index, '/')
 
-api.add_resource(Users, '/users')
+api.add_resource(RegisterAPI, '/auth/register/')
+api.add_resource(LoginAPI, '/auth/login/')
+api.add_resource(UserAPI, '/auth/profile/')
+api.add_resource(LogoutAPI, '/auth/logout/')
 
-api.add_resource(Posts, '/posts')
-api.add_resource(User_Posts, '/user/posts')
+api.add_resource(Users, '/users/')
 
-api.add_resource(Hello, '/hello')
-api.add_resource(TestResource, '/test')
+api.add_resource(Posts, '/posts/')
+api.add_resource(User_Posts, '/user/posts/')
+
+api.add_resource(Hello, '/hello/')
+api.add_resource(TestResource, '/test/')
